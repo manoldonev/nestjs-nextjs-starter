@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start -p 3001",
     "lint": "eslint \"src/**/*.{ts,tsx,js,jsx}\" --fix",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf .next tsconfig.tsbuildinfo"
   },
   "dependencies": {
     "next": "^14.2.0",

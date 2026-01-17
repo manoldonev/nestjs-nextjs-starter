@@ -12,22 +12,22 @@
 
 ### Backend (NestJS)
 
-| Type | Pattern | Example |
-|------|---------|---------|
-| Controllers | `*.controller.ts` | `users.controller.ts` |
-| Services | `*.service.ts` | `users.service.ts` |
-| Modules | `*.module.ts` | `users.module.ts` |
-| DTOs | `*.dto.ts` in `dto/` | `dto/create-user.dto.ts` |
+| Type        | Pattern              | Example                  |
+| ----------- | -------------------- | ------------------------ |
+| Controllers | `*.controller.ts`    | `users.controller.ts`    |
+| Services    | `*.service.ts`       | `users.service.ts`       |
+| Modules     | `*.module.ts`        | `users.module.ts`        |
+| DTOs        | `*.dto.ts` in `dto/` | `dto/create-user.dto.ts` |
 
 ### Frontend (Next.js)
 
-| Type | Pattern | Example |
-|------|---------|---------|
-| Pages | `page.tsx` | `app/users/[id]/page.tsx` |
-| Layouts | `layout.tsx` | `app/layout.tsx` |
-| Components | `kebab-case.tsx` | `user-card.tsx` |
-| Server Components | Default | No special suffix |
-| Client Components | `'use client'` | Start with directive |
+| Type              | Pattern          | Example                   |
+| ----------------- | ---------------- | ------------------------- |
+| Pages             | `page.tsx`       | `app/users/[id]/page.tsx` |
+| Layouts           | `layout.tsx`     | `app/layout.tsx`          |
+| Components        | `kebab-case.tsx` | `user-card.tsx`           |
+| Server Components | Default          | No special suffix         |
+| Client Components | `'use client'`   | Start with directive      |
 
 ---
 

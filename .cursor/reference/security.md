@@ -17,6 +17,7 @@ Every input from users, API clients, or external systems is potentially maliciou
 ### 2. Defense in Depth
 
 Implement security at multiple layers:
+
 - Input validation (DTOs)
 - Database query parameterization
 - Output encoding
@@ -77,7 +78,7 @@ app.useGlobalPipes(
     transformOptions: {
       enableImplicitConversion: true, // Auto-convert types
     },
-  }),
+  })
 );
 ```
 

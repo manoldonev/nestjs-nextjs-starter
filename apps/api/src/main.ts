@@ -2,7 +2,10 @@ import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
-import { AppConfigService, AppConfigServiceKey } from './config/app.config.service';
+import {
+  AppConfigService,
+  AppConfigServiceKey,
+} from './config/app.config.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -29,7 +32,7 @@ async function bootstrap() {
       transformOptions: {
         enableImplicitConversion: true, // Automatically convert primitive types
       },
-    }),
+    })
   );
 
   // Setup Swagger/OpenAPI documentation
@@ -45,7 +48,9 @@ async function bootstrap() {
   await app.listen(port);
 
   console.log(`API is running on: http://localhost:${port}/api`);
-  console.log(`API Documentation available at: http://localhost:${port}/api/docs`);
+  console.log(
+    `API Documentation available at: http://localhost:${port}/api/docs`
+  );
 }
 
 bootstrap();

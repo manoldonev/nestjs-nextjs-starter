@@ -10,6 +10,7 @@
 ### Rule #1: Default to Server Components
 
 **WRONG - Unnecessary client component:**
+
 ```typescript
 'use client'; // Don't add this unless needed!
 
@@ -23,6 +24,7 @@ export default function UserList() {
 ```
 
 **CORRECT - Server Component (default):**
+
 ```typescript
 // No 'use client' directive - this is a Server Component
 export default async function UserList() {
@@ -37,6 +39,7 @@ export default async function UserList() {
 ```
 
 **When to use 'use client':**
+
 - `onClick`, `onChange` handlers
 - `useState`, `useEffect`, `useRef`
 - Browser-only APIs
@@ -47,6 +50,7 @@ export default async function UserList() {
 ### Rule #2: TypeScript for Everything
 
 **WRONG - No types:**
+
 ```typescript
 export default function UserCard({ user }) {
   return <div>{user.name}</div>;
@@ -54,6 +58,7 @@ export default function UserCard({ user }) {
 ```
 
 **CORRECT - Full type safety:**
+
 ```typescript
 interface User {
   id: string;

@@ -16,16 +16,19 @@ This is a starter template. Customize this file with your project's roadmap.
 ## Suggested Next Steps
 
 ### Phase 1: Foundation
+
 - [ ] Add authentication (Auth.js, Clerk, etc.)
 - [ ] Add database (PostgreSQL, MySQL, etc.)
 - [ ] Add ORM (Drizzle, Prisma)
 
 ### Phase 2: Core Features
+
 - [ ] Implement user management
 - [ ] Add CRUD operations
 - [ ] Build main UI components
 
 ### Phase 3: Polish
+
 - [ ] Add comprehensive tests
 - [ ] Set up CI/CD pipeline
 - [ ] Add monitoring/logging

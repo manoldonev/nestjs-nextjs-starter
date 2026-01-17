@@ -61,16 +61,16 @@ yarn dev
 
 ## Commands
 
-| Command | Description |
-|---------|-------------|
-| `yarn dev` | Start all apps in development |
-| `yarn dev:api` | Start API only |
-| `yarn dev:web` | Start web only |
-| `yarn build` | Build all workspaces |
-| `yarn lint` | Run ESLint |
-| `yarn type-check` | Run TypeScript checks |
-| `yarn docker:up` | Start Docker services |
-| `yarn docker:down` | Stop Docker services |
+| Command            | Description                   |
+| ------------------ | ----------------------------- |
+| `yarn dev`         | Start all apps in development |
+| `yarn dev:api`     | Start API only                |
+| `yarn dev:web`     | Start web only                |
+| `yarn build`       | Build all workspaces          |
+| `yarn lint`        | Run ESLint                    |
+| `yarn type-check`  | Run TypeScript checks         |
+| `yarn docker:up`   | Start Docker services         |
+| `yarn docker:down` | Stop Docker services          |
 
 ## Adding a Database
 

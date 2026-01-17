@@ -10,6 +10,7 @@
 ### Rule #1: ALWAYS Use DTOs
 
 **WRONG - Raw parameters:**
+
 ```typescript
 @Get(':id')
 async getUser(@Param('id') id: string) {
@@ -18,6 +19,7 @@ async getUser(@Param('id') id: string) {
 ```
 
 **CORRECT - DTO with validation:**
+
 ```typescript
 // dto/get-user.dto.ts
 export class GetUserParamsDto {
@@ -34,6 +36,7 @@ async getUser(@Param() params: GetUserParamsDto) {
 ```
 
 **Why DTOs are mandatory:**
+
 - Runtime validation - Invalid inputs rejected before reaching business logic
 - Type safety - TypeScript enforces correct types
 - API documentation - Swagger auto-generates from decorators
@@ -45,6 +48,7 @@ async getUser(@Param() params: GetUserParamsDto) {
 ### Rule #2: ALWAYS Add Swagger Decorators
 
 **WRONG - No documentation:**
+
 ```typescript
 @Controller('users')
 export class UsersController {
@@ -56,6 +60,7 @@ export class UsersController {
 ```
 
 **CORRECT - Full documentation:**
+
 ```typescript
 @ApiTags('users')
 @Controller('users')
@@ -84,6 +89,7 @@ export class UsersController {
 ```
 
 **Required decorators:**
+
 - `@ApiTags()` - Group endpoints in Swagger UI
 - `@ApiOperation()` - Endpoint description
 - `@ApiResponse()` - Document ALL status codes (200, 400, 404, 500)
@@ -223,7 +229,7 @@ export const appConfigLoader = registerAs('app', () => ({
 export class SomeService {
   constructor(
     @Inject(AppConfigServiceKey)
-    private readonly config: AppConfigService,
+    private readonly config: AppConfigService
   ) {}
 }
 ```

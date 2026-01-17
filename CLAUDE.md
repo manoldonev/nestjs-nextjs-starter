@@ -26,13 +26,13 @@
 
 ### Quick Links (Most Used)
 
-| Need | Go To |
-|------|-------|
-| System design | [system-overview.md](.cursor/architecture/system-overview.md) |
-| Tech stack decisions | [ADR-001](.cursor/decisions/ADR-001-tech-stack.md) |
-| Code conventions | [conventions.md](.cursor/reference/conventions.md) |
-| NestJS patterns | [nestjs.md](.cursor/frameworks/nestjs.md) |
-| Next.js patterns | [nextjs.md](.cursor/frameworks/nextjs.md) |
+| Need                 | Go To                                                         |
+| -------------------- | ------------------------------------------------------------- |
+| System design        | [system-overview.md](.cursor/architecture/system-overview.md) |
+| Tech stack decisions | [ADR-001](.cursor/decisions/ADR-001-tech-stack.md)            |
+| Code conventions     | [conventions.md](.cursor/reference/conventions.md)            |
+| NestJS patterns      | [nestjs.md](.cursor/frameworks/nestjs.md)                     |
+| Next.js patterns     | [nextjs.md](.cursor/frameworks/nextjs.md)                     |
 
 ---
 
@@ -54,12 +54,14 @@
 - External System -> Application (`fromDriver()`, `deserialize()`)
 
 **Red Flags:**
+
 - "I'll just implement write logic, reads will work automatically"
 - "TypeScript types match the API, no conversion needed"
 
 #### 3. Think Through Generated Code
 
 **BEFORE marking implementation complete:**
+
 - What SQL will be generated?
 - What JSON will be sent?
 - What happens on read-back?
@@ -95,11 +97,11 @@
 
 Checklists auto-inject when working on specific patterns:
 
-| Pattern | Checklist |
-|---------|-----------|
-| `**/*.controller.ts` | DTOs, Swagger, validation |
-| `**/*.service.ts` | logging, error handling |
-| `apps/web/**/*.tsx` | Server Components, TypeScript |
+| Pattern              | Checklist                     |
+| -------------------- | ----------------------------- |
+| `**/*.controller.ts` | DTOs, Swagger, validation     |
+| `**/*.service.ts`    | logging, error handling       |
+| `apps/web/**/*.tsx`  | Server Components, TypeScript |
 
 ---
 
@@ -124,9 +126,11 @@ yarn docker:down      # Stop services
 ## Environment Variables
 
 **Required:**
+
 - `REDIS_URL` - Redis connection (optional if not using queues)
 
 **Local defaults:**
+
 ```
 REDIS_URL=redis://localhost:6379
 PORT=3000
