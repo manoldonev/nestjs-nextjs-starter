@@ -115,22 +115,24 @@ When you need to share code between apps, create packages in `packages/`.
 
 ### When to Create a Package
 
-| Scenario | Create Package? |
-|----------|----------------|
+| Scenario                         | Create Package?       |
+| -------------------------------- | --------------------- |
 | Types shared between API and Web | Yes - `packages/core` |
-| Database schema and queries | Yes - `packages/db` |
-| Shared React components | Yes - `packages/ui` |
-| Code only used in one app | No - keep in app |
-| Third-party wrapper used once | No - keep in app |
+| Database schema and queries      | Yes - `packages/db`   |
+| Shared React components          | Yes - `packages/ui`   |
+| Code only used in one app        | No - keep in app      |
+| Third-party wrapper used once    | No - keep in app      |
 
 ### Creating a New Package
 
 1. Create directory structure:
+
 ```bash
 mkdir -p packages/core/src
 ```
 
 2. Create `packages/core/package.json`:
+
 ```json
 {
   "name": "@starter/core",
@@ -147,6 +149,7 @@ mkdir -p packages/core/src
 ```
 
 3. Create `packages/core/tsconfig.json`:
+
 ```json
 {
   "extends": "../../tsconfig.json",
@@ -159,16 +162,15 @@ mkdir -p packages/core/src
 ```
 
 4. Update root `package.json` workspaces:
+
 ```json
 {
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+  "workspaces": ["apps/*", "packages/*"]
 }
 ```
 
 5. Add path aliases to consuming apps' `tsconfig.json`:
+
 ```json
 {
   "paths": {
@@ -178,17 +180,18 @@ mkdir -p packages/core/src
 ```
 
 6. Import in apps:
+
 ```typescript
 import { MyType } from '@starter/core';
 ```
 
 ### Common Package Types
 
-| Package | Purpose | Example Contents |
-|---------|---------|------------------|
-| `core` | Shared types & utilities | Types, Zod schemas, date utils |
-| `db` | Database layer | Drizzle schema, queries, migrations |
-| `ui` | React components | Buttons, forms, layout components |
+| Package | Purpose                  | Example Contents                    |
+| ------- | ------------------------ | ----------------------------------- |
+| `core`  | Shared types & utilities | Types, Zod schemas, date utils      |
+| `db`    | Database layer           | Drizzle schema, queries, migrations |
+| `ui`    | React components         | Buttons, forms, layout components   |
 
 ---
 
@@ -198,13 +201,13 @@ For CPU-intensive tasks, ML models, or non-Node.js code, create services in `ser
 
 ### When to Create a Service
 
-| Scenario | Create Service? |
-|----------|----------------|
-| Python ML model (XGBoost, PyTorch) | Yes |
-| Rust for performance-critical code | Yes |
-| Heavy computation that blocks Node.js | Yes |
-| Simple async task | No - use BullMQ |
-| Code that can run in Node.js | No - keep in API |
+| Scenario                              | Create Service?  |
+| ------------------------------------- | ---------------- |
+| Python ML model (XGBoost, PyTorch)    | Yes              |
+| Rust for performance-critical code    | Yes              |
+| Heavy computation that blocks Node.js | Yes              |
+| Simple async task                     | No - use BullMQ  |
+| Code that can run in Node.js          | No - keep in API |
 
 ### Service Architecture
 
@@ -234,11 +237,13 @@ For CPU-intensive tasks, ML models, or non-Node.js code, create services in `ser
 ### Creating a Python Service
 
 1. Create directory structure:
+
 ```bash
 mkdir -p services/ml-service
 ```
 
 2. Create `services/ml-service/main.py`:
+
 ```python
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -259,6 +264,7 @@ def predict(request: PredictRequest):
 ```
 
 3. Create `services/ml-service/Dockerfile`:
+
 ```dockerfile
 FROM python:3.11-slim
 WORKDIR /app
@@ -269,6 +275,7 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8001"]
 ```
 
 4. Add to `docker-compose.yml`:
+
 ```yaml
 services:
   ml-service:
@@ -280,10 +287,12 @@ services:
 ```
 
 5. Call from NestJS:
+
 ```typescript
 @Injectable()
 export class MlService {
-  private readonly baseUrl = process.env.ML_SERVICE_URL || 'http://localhost:8001';
+  private readonly baseUrl =
+    process.env.ML_SERVICE_URL || 'http://localhost:8001';
 
   async predict(features: number[]): Promise<number> {
     const response = await fetch(`${this.baseUrl}/predict`, {
@@ -300,6 +309,7 @@ export class MlService {
 ### Creating a Rust Service
 
 1. Create with Cargo:
+
 ```bash
 cd services
 cargo new rust-service

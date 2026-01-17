@@ -4,7 +4,10 @@ export class HealthResponseDto {
   @ApiProperty({ example: 'ok', description: 'Health status' })
   status: string;
 
-  @ApiProperty({ example: '2026-01-17T12:00:00.000Z', description: 'Current timestamp' })
+  @ApiProperty({
+    example: '2026-01-17T12:00:00.000Z',
+    description: 'Current timestamp',
+  })
   timestamp: string;
 
   @ApiProperty({ example: 'api', description: 'Service name' })
@@ -15,9 +18,15 @@ export class HealthResponseDto {
 }
 
 export class WelcomeResponseDto {
-  @ApiProperty({ example: 'Welcome to the API', description: 'Welcome message' })
+  @ApiProperty({
+    example: 'Welcome to the API',
+    description: 'Welcome message',
+  })
   message: string;
 
-  @ApiProperty({ example: '/api/docs', description: 'Link to API documentation' })
+  @ApiProperty({
+    example: '/api/docs',
+    description: 'Link to API documentation',
+  })
   docs: string;
 }

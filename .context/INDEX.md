@@ -27,8 +27,8 @@
 
 ### Architecture (`architecture/`)
 
-| File                                                             | Contents                                     |
-| ---------------------------------------------------------------- | -------------------------------------------- |
+| File                                                             | Contents                                 |
+| ---------------------------------------------------------------- | ---------------------------------------- |
 | [system-overview.md](../.cursor/architecture/system-overview.md) | Tech stack, monorepo, packages, services |
 
 ### Reference (`reference/`)
@@ -53,8 +53,8 @@
 
 ### Workflows (`workflows/`)
 
-| File                                                                     | Contents                              |
-| ------------------------------------------------------------------------ | ------------------------------------- |
+| File                                                                      | Contents                              |
+| ------------------------------------------------------------------------- | ------------------------------------- |
 | [integration-checklist.md](../.cursor/workflows/integration-checklist.md) | External system integration checklist |
 
 ---

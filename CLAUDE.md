@@ -88,6 +88,7 @@
 3. **ALWAYS Add Swagger Docs** - @ApiTags, @ApiOperation, @ApiResponse
 4. **Performance is Non-Negotiable** - Indexes, no N+1, pagination, transactions
 5. **ALWAYS Log Operations** - Logger from @nestjs/common, context IDs, stack traces
+6. **ALWAYS Run `yarn format`** - After writing/editing markdown or code files, run `yarn format` before committing
 
 ---
 
@@ -140,6 +141,7 @@ REDIS_URL=redis://localhost:6379  # Optional - for caching/queues when added
 
 - [ ] DTOs with validation decorators
 - [ ] Swagger documentation complete
+- [ ] `yarn format` run (Prettier)
 - [ ] `yarn lint` + `yarn type-check` + `yarn build` pass
 - [ ] Logging for operations and errors
 

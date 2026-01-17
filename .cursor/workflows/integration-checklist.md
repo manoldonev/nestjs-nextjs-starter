@@ -21,12 +21,14 @@ When implementing ANY integration with an external system, you MUST complete ALL
 ### 1. Understand the Wire Format
 
 **Before writing any code, document:**
+
 - How is data ACTUALLY stored/transmitted?
 - What format does the external system expect?
 - What format does the external system return?
 - Are there type coercions or conversions required?
 
 **Example - Database Custom Type:**
+
 ```typescript
 // ❌ WRONG - Assuming JavaScript types work directly
 const customType = customType<{ data: number[] }>({
@@ -60,12 +62,12 @@ const customType = customType<{ data: number[]; driverData: string }>({
 
 **For ANY custom type/serialization, implement BOTH directions:**
 
-| System Type | Conversion Required | Missing = Runtime Failure |
-|-------------|---------------------|---------------------------|
-| Drizzle `customType` | `toDriver()` + `fromDriver()` | Will fail at INSERT/SELECT |
-| TypeORM `@ValueTransformer` | `to()` + `from()` | Will fail at save/load |
-| Redis serialization | `serialize()` + `deserialize()` | Will fail at set/get |
-| API DTOs | `toDTO()` + `fromDTO()` | Will fail at request/response |
+| System Type                 | Conversion Required             | Missing = Runtime Failure     |
+| --------------------------- | ------------------------------- | ----------------------------- |
+| Drizzle `customType`        | `toDriver()` + `fromDriver()`   | Will fail at INSERT/SELECT    |
+| TypeORM `@ValueTransformer` | `to()` + `from()`               | Will fail at save/load        |
+| Redis serialization         | `serialize()` + `deserialize()` | Will fail at set/get          |
+| API DTOs                    | `toDTO()` + `fromDTO()`         | Will fail at request/response |
 
 **Never assume one direction is enough!**
 
@@ -88,13 +90,13 @@ const customType = customType<{ data: number[]; driverData: string }>({
 
 **For each external system, verify:**
 
-| System | Validation Required |
-|--------|---------------------|
-| PostgreSQL Extensions | Are required extensions installed? |
-| Redis | Is connection config correct? (host, port, prefix, timeout) |
-| S3/Storage | Are credentials valid? Is bucket accessible? |
-| APIs | Is API key valid? Are rate limits understood? |
-| Message Queues | Are queue names correct? Is serialization compatible? |
+| System                | Validation Required                                         |
+| --------------------- | ----------------------------------------------------------- |
+| PostgreSQL Extensions | Are required extensions installed?                          |
+| Redis                 | Is connection config correct? (host, port, prefix, timeout) |
+| S3/Storage            | Are credentials valid? Is bucket accessible?                |
+| APIs                  | Is API key valid? Are rate limits understood?               |
+| Message Queues        | Are queue names correct? Is serialization compatible?       |
 
 ---
 
@@ -103,10 +105,11 @@ const customType = customType<{ data: number[]; driverData: string }>({
 ### Database Custom Types (Drizzle, TypeORM, Prisma)
 
 **Mandatory Implementation:**
+
 ```typescript
 const customType = customType<{
-  data: ApplicationType;      // Type in your application
-  driverData: DatabaseType;   // Type in the database
+  data: ApplicationType; // Type in your application
+  driverData: DatabaseType; // Type in the database
 }>({
   dataType() {
     return 'database_type_name';
@@ -123,6 +126,7 @@ const customType = customType<{
 ```
 
 **Common Mistake:**
+
 - Only implementing `dataType()` and assuming TypeScript types are enough
 - Forgetting that database values are often strings/buffers, not JavaScript types
 
@@ -131,6 +135,7 @@ const customType = customType<{
 ### API Integrations
 
 **Mandatory Implementation:**
+
 ```typescript
 // 1. Document API format
 interface ExternalAPIResponse {
@@ -153,6 +158,7 @@ function fromAPI(response: ExternalAPIResponse): ApplicationData {
 ```
 
 **Common Mistake:**
+
 - Assuming API types match application types
 - Not validating API responses
 - Not handling API errors/retries
@@ -162,6 +168,7 @@ function fromAPI(response: ExternalAPIResponse): ApplicationData {
 ### Cache/Redis Integrations
 
 **Mandatory Implementation:**
+
 ```typescript
 // 1. Define serialization format
 type CacheFormat = string; // JSON? MessagePack? Binary?
@@ -185,6 +192,7 @@ function getCached(key: string): ApplicationType | null {
 ```
 
 **Common Mistake:**
+
 - Forgetting that Redis stores strings/buffers
 - Not handling JSON serialization errors
 - Not handling cache misses
@@ -194,6 +202,7 @@ function getCached(key: string): ApplicationType | null {
 ### Message Queue Integrations
 
 **Mandatory Implementation:**
+
 ```typescript
 // 1. Define message format
 interface QueueMessage {
@@ -215,6 +224,7 @@ function parseMessage(message: QueueMessage): ApplicationData {
 ```
 
 **Common Mistake:**
+
 - Assuming queue messages can contain any JavaScript type
 - Not validating messages in consumers
 - Not handling schema changes
@@ -226,12 +236,14 @@ function parseMessage(message: QueueMessage): ApplicationData {
 **Use this checklist for EVERY external system integration:**
 
 ### Pre-Implementation
+
 - [ ] Read official documentation for wire format
 - [ ] Identify the boundary (Application ↔ External System)
 - [ ] Document expected input/output formats
 - [ ] Plan serialization/deserialization strategy
 
 ### Implementation
+
 - [ ] Implement Application → External System conversion
 - [ ] Implement External System → Application conversion
 - [ ] Add validation for both directions
@@ -239,6 +251,7 @@ function parseMessage(message: QueueMessage): ApplicationData {
 - [ ] Document format in code comments
 
 ### Verification
+
 - [ ] Think through what actual data/SQL/API calls will be generated
 - [ ] Verify type casting is correct (especially for databases)
 - [ ] Test with actual external system (not just TypeScript compilation)
@@ -264,16 +277,26 @@ const wireFormat: string = JSON.stringify(data);
 ```typescript
 // ❌ WRONG - Only implemented write, not read
 const customType = customType({
-  dataType() { return 'my_type'; },
-  toDriver(value) { return serialize(value); },
+  dataType() {
+    return 'my_type';
+  },
+  toDriver(value) {
+    return serialize(value);
+  },
   // Missing fromDriver! Reads will fail!
 });
 
 // ✅ CORRECT - Complete bidirectional implementation
 const customType = customType({
-  dataType() { return 'my_type'; },
-  toDriver(value) { return serialize(value); },
-  fromDriver(value) { return deserialize(value); },
+  dataType() {
+    return 'my_type';
+  },
+  toDriver(value) {
+    return serialize(value);
+  },
+  fromDriver(value) {
+    return deserialize(value);
+  },
 });
 ```
 
