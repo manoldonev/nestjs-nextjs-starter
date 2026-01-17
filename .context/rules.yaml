@@ -1,0 +1,116 @@
+# Context7-style rules for enforcing best practices
+# These rules auto-inject mandatory checklists when working on specific file types
+
+- pattern: "apps/api/src/**/*.controller.ts"
+  context: |
+    MANDATORY CONTROLLER CHECKLIST
+
+    Before modifying ANY controller endpoint, you MUST:
+
+    [ ] Create DTOs in ./dto/ directory (one per endpoint: params, query, body)
+    [ ] Add class-validator decorators to ALL DTO fields (@IsUUID, @IsInt, @IsString, etc.)
+    [ ] Add @ApiProperty decorators to ALL DTO fields with examples
+    [ ] Add @ApiTags decorator to controller class
+    [ ] Add @ApiOperation decorator to each endpoint (summary + description)
+    [ ] Add @ApiResponse decorators for ALL status codes (200, 400, 404, 500)
+    [ ] Use @Param() with DTO, NOT raw string parameters
+    [ ] Use @Query() with DTO, NOT raw string parameters
+    [ ] Use @Body() with DTO, NOT raw object parameters
+    [ ] Validate ALL UUIDs with @IsUUID(4)
+    [ ] Validate numeric ranges with @Min/@Max
+    [ ] Validate enums with @IsIn([...])
+    [ ] Set default values in DTO class properties
+
+    Reference: .cursor/frameworks/nestjs.md
+
+    Example DTO structure:
+    ```typescript
+    export class GetItemParamsDto {
+      @ApiProperty({ description: 'Item ID', example: 'uuid-here' })
+      @IsUUID(4, { message: 'ID must be valid UUID' })
+      id: string;
+    }
+
+    export class ListItemsQueryDto {
+      @ApiProperty({ minimum: 1, maximum: 100, default: 10 })
+      @IsOptional()
+      @Type(() => Number)
+      @IsInt()
+      @Min(1)
+      @Max(100)
+      limit?: number = 10;
+    }
+    ```
+
+- pattern: "apps/api/src/**/*.service.ts"
+  context: |
+    MANDATORY SERVICE CHECKLIST
+
+    Before modifying ANY service, you MUST:
+
+    [ ] Add logging for operations (this.logger.log/warn/error)
+    [ ] Implement proper error handling with typed exceptions
+    [ ] Validate ALL external inputs (even from controllers)
+    [ ] Handle null/undefined cases gracefully
+    [ ] Use transactions for multi-step operations (when using DB)
+    [ ] Avoid N+1 queries (when using DB)
+
+    References:
+    - .cursor/frameworks/nestjs.md
+    - .cursor/reference/security.md
+
+    Example:
+    ```typescript
+    @Injectable()
+    export class ItemsService {
+      private readonly logger = new Logger(ItemsService.name);
+
+      async createItem(dto: CreateItemDto) {
+        this.logger.log(`Creating item: ${dto.name}`);
+        try {
+          // ... implementation
+          this.logger.log(`Item created: ${item.id}`);
+          return item;
+        } catch (error) {
+          this.logger.error(`Failed to create item`, error.stack);
+          throw error;
+        }
+      }
+    }
+    ```
+
+- pattern: "apps/web/**/*.tsx"
+  context: |
+    MANDATORY NEXT.JS CHECKLIST
+
+    Before modifying ANY Next.js component, you MUST:
+
+    [ ] Use Server Components by default (NOT 'use client' unless necessary)
+    [ ] Add 'use client' ONLY for interactivity (onClick, useState, etc.)
+    [ ] Use TypeScript for ALL props (NO 'any' types)
+    [ ] Handle loading states with Suspense or loading.tsx
+    [ ] Handle error states with error.tsx
+    [ ] Validate all user inputs
+    [ ] Use proper accessibility attributes
+
+    Reference: .cursor/frameworks/nextjs.md
+
+    Default to Server Components - use 'use client' sparingly
+
+- pattern: "**/*.md"
+  context: |
+    DOCUMENTATION STANDARDS
+
+    When writing documentation:
+
+    [ ] Use clear, concise language
+    [ ] Include code examples with syntax highlighting
+    [ ] Add "Why" explanations, not just "How"
+    [ ] Use checkmarks/X for good/bad examples
+    [ ] Include common pitfalls section
+    [ ] Add "Last Updated" date at the bottom
+    [ ] Link to related documentation
+    [ ] Use tables for comparisons
+    [ ] Add TL;DR section at top for long docs
+
+    Goal: Make docs so clear that future you can understand them at 2am

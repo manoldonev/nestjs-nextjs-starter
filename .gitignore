@@ -1,0 +1,65 @@
+# Dependencies
+node_modules/
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+*.tsbuildinfo
+# Compiled TypeScript outputs in src (from monorepo builds)
+**/*.js
+**/*.d.ts
+**/*.js.map
+**/*.d.ts.map
+# But allow config files
+!*.config.js
+!*.config.mjs
+!jest.config.js
+!next.config.js
+!tailwind.config.js
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Database
+*.db
+*.sqlite
+postgres-data/
+
+# Local storage (development)
+.storage/
+
+# Temporary
+tmp/
+temp/
+*.tmp
