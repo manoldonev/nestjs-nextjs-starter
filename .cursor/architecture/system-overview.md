@@ -41,7 +41,7 @@
 │                     Infrastructure                          │
 │  ┌──────────────┐  ┌──────────────┐                        │
 │  │ Redis        │  │ Database     │                        │
-│  │ (Cache/Queue)│  │ (Add later)  │                        │
+│  │ (Optional)   │  │ (Add later)  │                        │
 │  └──────────────┘  └──────────────┘                        │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -65,13 +65,9 @@ nestjs-nextjs-starter/
 │       └── src/
 │           └── app/         # App Router pages
 │
-├── packages/                # Shared libraries (add when needed)
-│   ├── core/                # Shared types, schemas, utilities
-│   ├── db/                  # Database schema & ORM
-│   └── ui/                  # Shared React components
+├── packages/                # Shared libraries (create when needed - see below)
 │
-├── services/                # External microservices (add when needed)
-│   └── [service-name]/      # Python, Rust, Go services
+├── services/                # External microservices (create when needed - see below)
 │
 ├── .cursor/                 # AI documentation
 ├── .context/                # Auto-injection rules

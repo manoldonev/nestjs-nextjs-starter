@@ -12,7 +12,7 @@
 
 **Mission:** [Your mission statement here]
 
-**Tech Stack:** NestJS 11 + Next.js 14 + Redis
+**Tech Stack:** NestJS 11 + Next.js 14 (Redis available via Docker when needed)
 
 ---
 
@@ -125,15 +125,11 @@ yarn docker:down      # Stop services
 
 ## Environment Variables
 
-**Required:**
-
-- `REDIS_URL` - Redis connection (optional if not using queues)
-
 **Local defaults:**
 
 ```
-REDIS_URL=redis://localhost:6379
 PORT=3000
+REDIS_URL=redis://localhost:6379  # Optional - for caching/queues when added
 ```
 
 ---
@@ -146,6 +142,42 @@ PORT=3000
 - [ ] Swagger documentation complete
 - [ ] `yarn lint` + `yarn type-check` + `yarn build` pass
 - [ ] Logging for operations and errors
+
+---
+
+## Post-Implementation Workflow
+
+**After completing a comprehensive plan or notable feature, proactively offer:**
+
+### 1. Architecture Review
+
+Suggest reviewing the implementation as a **Senior Principal Engineer/Architect**:
+
+- Evaluate against SOLID principles and clean architecture
+- Check for proper separation of concerns
+- Identify potential scalability issues
+- Review error handling and edge cases
+- Assess security implications
+- Verify consistency with existing patterns in the codebase
+
+### 2. Documentation Update
+
+Suggest updating the knowledge base as a **Senior Principal Technical Writer**:
+
+- Add new patterns to relevant `.cursor/frameworks/` files
+- Document architectural decisions in `.cursor/decisions/` (ADRs)
+- Update `.cursor/architecture/system-overview.md` if system design changed
+- Add troubleshooting notes for complex implementations
+- Update this file (CLAUDE.md) if new critical rules emerged
+- Verify consistency between documentation and implementation across the codebase
+
+**Trigger phrases to watch for:**
+
+- "Implementation complete"
+- "Feature finished"
+- "Plan executed"
+- Multi-file changes affecting architecture
+- New integrations or external system connections
 
 ---
 
