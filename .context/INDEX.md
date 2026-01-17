@@ -51,6 +51,12 @@
 | ----------------------------------------- | -------------------------------- |
 | [README.md](../.cursor/roadmap/README.md) | Project milestones, future plans |
 
+### Workflows (`workflows/`)
+
+| File                                                                     | Contents                              |
+| ------------------------------------------------------------------------ | ------------------------------------- |
+| [integration-checklist.md](../.cursor/workflows/integration-checklist.md) | External system integration checklist |
+
 ---
 
 ## By Task Type
@@ -88,20 +94,29 @@
 3. Add to `docker-compose.yml`
 4. Create NestJS client service
 
+### Integrating External Systems
+
+1. Read: [integration-checklist.md](../.cursor/workflows/integration-checklist.md) - Full checklist
+2. Understand wire format before coding
+3. Implement bidirectional conversion
+4. Test with actual system, not just TypeScript
+
 ---
 
 ## Quick Search
 
-| Keyword           | Go To                                                                                  |
-| ----------------- | -------------------------------------------------------------------------------------- |
-| DTO, validation   | [nestjs.md](../.cursor/frameworks/nestjs.md)                                           |
-| Swagger, API      | [nestjs.md](../.cursor/frameworks/nestjs.md)                                           |
-| Server Components | [nextjs.md](../.cursor/frameworks/nextjs.md)                                           |
-| security, input   | [security.md](../.cursor/reference/security.md)                                        |
-| git, commit       | [conventions.md](../.cursor/reference/conventions.md)                                  |
-| package, shared   | [system-overview.md](../.cursor/architecture/system-overview.md#adding-shared-packages)   |
-| service, Python   | [system-overview.md](../.cursor/architecture/system-overview.md#adding-external-services) |
+| Keyword            | Go To                                                                                     |
+| ------------------ | ----------------------------------------------------------------------------------------- |
+| DTO, validation    | [nestjs.md](../.cursor/frameworks/nestjs.md)                                              |
+| Swagger, API       | [nestjs.md](../.cursor/frameworks/nestjs.md)                                              |
+| Server Components  | [nextjs.md](../.cursor/frameworks/nextjs.md)                                              |
+| security, input    | [security.md](../.cursor/reference/security.md)                                           |
+| git, commit        | [conventions.md](../.cursor/reference/conventions.md)                                     |
+| package, shared    | [system-overview.md](../.cursor/architecture/system-overview.md#adding-shared-packages)   |
+| service, Python    | [system-overview.md](../.cursor/architecture/system-overview.md#adding-external-services) |
 | Rust, microservice | [system-overview.md](../.cursor/architecture/system-overview.md#adding-external-services) |
+| integration, API   | [integration-checklist.md](../.cursor/workflows/integration-checklist.md)                 |
+| Redis, database    | [integration-checklist.md](../.cursor/workflows/integration-checklist.md)                 |
 
 ---
 

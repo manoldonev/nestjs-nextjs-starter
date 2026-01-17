@@ -26,6 +26,10 @@ When answering questions or making changes, consult documents in this priority:
    - Current work priorities, future features
    - Check before starting new work
 
+6. **`workflows/`** - Human processes and checklists
+   - Integration checklists, deployment procedures
+   - Follow when implementing integrations
+
 ## Resolution Rules
 
 - **Code vs Docs conflict**: Code wins (unless an ADR states otherwise)
