@@ -16,6 +16,48 @@
 
 ---
 
+## Session Bootstrap (Required)
+
+This repository is **AI-native** and follows a strict operating model.
+
+Before doing anything in this session, you MUST:
+
+1. Read `.cursor/README.md` completely
+   - Defines the operating model, authority rules, and priority order.
+
+2. Read `.ai/map.md`
+   - Routes you to the relevant authoritative documents.
+
+3. Read `.ai/state.md`
+   - Defines the current active focus and constraints.
+
+4. Read `.ai/next.md` (if present)
+   - Explicitly authorizes what work may proceed.
+
+### Non-Negotiable Rules
+
+- You have **no memory** beyond repository files.
+- `.cursor/` defines truth. Never contradict or duplicate it.
+- `.ai/` defines execution focus only. It is ephemeral.
+- Chat output is the **lowest priority** artifact.
+- Never invent decisions, assumptions, or requirements.
+- If documentation conflicts or intent is unclear: **stop and ask**.
+
+### First Response Requirement
+
+Your first response in this session MUST:
+
+- Restate the current objective in your own words
+- List the files you read
+- Call out any ambiguities, conflicts, or missing information
+
+If `.ai/next.md` is empty:
+
+- Do NOT proceed with implementation
+- Propose what `.ai/next.md` should contain instead
+
+---
+
 ## Documentation Navigation
 
 > **Full index:** [.context/INDEX.md](.context/INDEX.md) - Comprehensive documentation map with task-based navigation

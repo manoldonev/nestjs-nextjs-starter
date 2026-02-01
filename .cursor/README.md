@@ -2,6 +2,61 @@
 
 This directory contains authoritative project context for AI assistants.
 
+## Operating Model (Required Reading)
+
+This is an **AI-native repository**.
+
+Every session — human, AI-assisted, or hybrid — operates under the same rules.
+AI is not a special mode here; it is part of how work is done.
+
+### Core Principles
+
+- **There is no session memory**
+- **Files are the memory**
+- **Chat output is disposable**
+
+If chat output and repository files disagree, **the files win**.
+
+### Documentation Roles
+
+This repository uses two complementary layers:
+
+#### `.cursor/` — Authoritative Knowledge Base
+
+- Defines what is **true**
+- Long-lived and cumulative
+- Source of truth for decisions, architecture, standards, and plans
+- Must never be duplicated or paraphrased elsewhere
+
+#### `.ai/` — Execution & Attention Control Plane
+
+- Defines what matters **right now**
+- Routes attention into the relevant parts of `.cursor/`
+- Synchronization point for parallel work
+- Ephemeral by design
+
+`.ai/` never defines truth.
+It defines focus.
+
+### Execution Rules
+
+Before implementing anything (human or AI):
+
+1. Check `.ai/state.md` to confirm alignment with current focus
+2. Use `.ai/map.md` to locate the relevant `.cursor/` documents
+3. Read those documents before acting
+4. If `.ai/next.md` is empty, do not proceed with implementation
+
+### Decisions and Ambiguity
+
+- Decisions are never made implicitly
+- Any behavior change must be recorded in a new ADR under `decisions/`
+- If documentation conflicts or intent is unclear:
+  - Stop
+  - Surface the conflict
+  - Ask for clarification
+  - Do not guess
+
 ## Priority Order
 
 When answering questions or making changes, consult documents in this priority:
